@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  phone     String @unique
+  password  String
+  role      String
+}
+
+model Beneficiary {
+  id Int @id @default(autoincrement())
+
+  beneficiaryNumber String  @unique
+  pmjayId           String? @unique
+
+  firstName String
+  lastName  String
+  gender    String
+  phone     String
+
+  address String
+
+  // Existing beneficiary location fields
+  state String
+  lga   String
+  ward  String
+
+  // BIS Registration Status
+  verificationStatus String @default("Pending")
+
+  // Lookup Relationships
+  schemeId Int?
+  scheme   Scheme? @relation(fields: [schemeId], references: [id])
+
+  stateLookupId Int?
+  stateLookup   StateLookup? @relation(fields: [stateLookupId], references: [id])
+
+  districtId Int?
+  district   District? @relation(fields: [districtId], references: [id])
+
+  subSchemeId Int?
+  subScheme   SubScheme? @relation(fields: [subSchemeId], references: [id])
+
+  familyMembers FamilyMember[]
+}
+
+model FamilyMember {
+  id Int @id @default(autoincrement())
+
+  beneficiaryId Int
+
+  name         String
+  relationship String
+  age          Int
+  gender       String
+
+  beneficiary Beneficiary @relation(fields: [beneficiaryId], references: [id], onDelete: Cascade)
+}
+
+model Scheme {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  beneficiaries Beneficiary[]
+}
+
+model StateLookup {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  districts     District[]
+  beneficiaries Beneficiary[]
+}
+
+model District {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  stateId Int
+  state   StateLookup @relation(fields: [stateId], references: [id])
+
+  beneficiaries Beneficiary[]
+
+  @@unique([name, stateId], name: "name_stateId")
+}
+
+model SubScheme {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  beneficiaries Beneficiary[]
+}
