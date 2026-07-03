@@ -152,11 +152,11 @@ useEffect(() => {
   return (
     <div>
 
-      <h1 className="text-3xl font-bold text-blue-900 mb-8">
+      <h1 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6 md:mb-8">
         Settings
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
 
         {/* Profile */}
 
@@ -233,9 +233,9 @@ useEffect(() => {
 ========================= */}
 
 {showUsers && (
-  <div className="mt-8 bg-white shadow rounded-lg">
+  <div className="mt-8 bg-white shadow rounded-lg overflow-hidden">
 
-    <div className="flex justify-between items-center p-4 border-b">
+    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 border-b">
 
       <h2 className="font-semibold text-lg">
         User Management
@@ -243,36 +243,36 @@ useEffect(() => {
 
       <button
       onClick={() => setShowCreateModal(true)}
-        className="bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
+        className="bg-blue-700 text-white px-4 py-2 rounded cursor-pointer w-full sm:w-auto"
       >
         + Create New User
       </button>
 
     </div>
-
-    <table className="w-full">
+     <div className="overflow-x-auto">
+    <table className="min-w-[700px] w-full">
 
       <thead>
 
         <tr className="bg-gray-100">
 
-          <th className="p-3 text-left">
+          <th className="p-3 py-2 text-left whitespace-nowrap">
             First Name
           </th>
 
-          <th className="p-3 text-left">
+          <th className="p-3 py-2 text-left whitespace-nowrap">
             Last Name
           </th>
 
-          <th className="p-3 text-left">
+          <th className="p-3 py-2 text-left whitespace-nowrap">
             Phone
           </th>
 
-          <th className="p-3 text-left">
+          <th className="p-3 py-2 text-left whitespace-nowrap">
             Role
           </th>
 
-          <th className="p-3 text-left">
+          <th className="p-3 py-2 text-left whitespace-nowrap">
             Actions
           </th>
 
@@ -304,24 +304,24 @@ useEffect(() => {
         className="border-t"
       >
 
-        <td className="p-3">
+        <td className="px-3 py-2 whitespace-nowrap">
           {user.firstName}
         </td>
 
-        <td className="p-3">
+        <td className="px-3 py-2 whitespace-nowrap">
           {user.lastName}
         </td>
 
-        <td className="p-3">
+        <td className="px-3 py-2 whitespace-nowrap">
           {user.phone}
         </td>
 
-        <td className="p-3">
+        <td className="px-3 py-2 whitespace-nowrap">
           {user.role}
         </td>
 
-        <td className="p-3 space-x-2">
-
+        <td className="px-3 py-2 whitespace-nowrap">
+         <div className="flex gap-2">
           <button
   onClick={() => {
 
@@ -353,7 +353,7 @@ useEffect(() => {
 >
   Delete
 </button>
-
+</div>
         </td>
 
       </tr>
@@ -364,16 +364,16 @@ useEffect(() => {
 
 </tbody>
 
-    </table>
-
-  </div>
+</table>
+</div>
+</div>
 )}
 
 {showCreateModal && (
 
-<div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+<div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
 
-<div className="bg-white rounded-lg shadow-lg p-6 w-[450px]">
+<div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
 
 <h2 className="text-xl font-bold mb-6">
 {editingUser
@@ -428,7 +428,7 @@ Operator
 
 </select>
 
-<div className="flex justify-end gap-3">
+<div className="flex flex-col sm:flex-row justify-end gap-3">
 
 <button
 onClick={() => {
@@ -440,14 +440,14 @@ onClick={() => {
   setPassword("");
   setRole("admin");
 }}
-className="px-4 py-2 bg-gray-500 text-white rounded"
+className="px-4 py-2 bg-gray-500 text-white rounded w-full sm:w-auto"
 >
 Cancel
 </button>
 
 <button
 onClick={saveUser}
-className="px-4 py-2 bg-blue-700 text-white rounded"
+className="px-4 py-2 bg-blue-700 text-white rounded w-full sm:w-auto"
 >
 {editingUser
  ? "Update User"
@@ -461,6 +461,6 @@ className="px-4 py-2 bg-blue-700 text-white rounded"
 </div>
 
 )}
-    </div>
+</div>
   );
 }

@@ -67,69 +67,69 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
 
-      <div className="bg-blue-700 text-white p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">
+      <div className="bg-blue-700 text-white px-4 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <h1 className="text-lg sm:text-xl font-bold">
           Beneficiary Search Portal
         </h1>
 
         <button
           onClick={logout}
-          className="bg-white text-blue-700 px-4 py-2 rounded cursor-pointer"
+          className="bg-white text-blue-700 px-4 py-2 rounded cursor-pointer w-auto self-start sm:self-auto"
         >
           Logout
         </button>
       </div>
 
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:px-6">
         {/* Statistics Cards */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <div className="bg-white rounded-lg shadow p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-6">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
             <h3 className="text-gray-500">
               Total Beneficiaries
             </h3>
 
-            <p className="text-4xl font-bold text-blue-700 mt-2">
+            <p className="text-3xl sm:text-4xl font-bold text-blue-700 mt-2">
               {stats.beneficiaries}
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
             <h3 className="text-gray-500">
               Total Family Members
             </h3>
 
-            <p className="text-4xl font-bold text-green-700 mt-2">
+            <p className="text-3xl sm:text-4xl font-bold text-green-700 mt-2">
               {stats.familyMembers}
             </p>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
   <h3 className="text-gray-500">
     Male Beneficiaries
   </h3>
 
-  <p className="text-4xl font-bold text-blue-600 mt-2">
+  <p className="text-3xl sm:text-4xl font-bold text-blue-600 mt-2">
     {stats.maleBeneficiaries}
   </p>
 </div>
 
-<div className="bg-white rounded-lg shadow p-6">
+<div className="bg-white rounded-lg shadow p-4 sm:p-6">
   <h3 className="text-gray-500">
     Female Beneficiaries
   </h3>
 
-        <p className="text-4xl font-bold text-pink-600 mt-2">
+        <p className="text-3xl sm:text-4xl font-bold text-pink-600 mt-2">
             {stats.femaleBeneficiaries}
               </p>
            </div>
             </div>
 
       
-            </div>
+           
 
-              <SearchFilters />
+              {/*<SearchFilters />*/}
 
-            <div className="mt-8 bg-white rounded-lg shadow">
+            <div className="mt-8 bg-white rounded-lg shadow overflow-hidden">
 
          <div className="p-4 border-b">
 
@@ -138,26 +138,26 @@ export default function Dashboard() {
         </h3>
 
          </div>
-
-        <table className="w-full">
+      <div className="overflow-x-auto">
+        <table className="min-w-[700px] w-full">
 
          <thead>
 
       <tr className="bg-gray-50">
 
-        <th className="p-3 text-left">
+        <th className="px-3 py-2 sm:p-3 text-left whitespace-nowrap">
           Beneficiary No
         </th>
 
-        <th className="p-3 text-left">
+        <th className="px-3 py-2 sm:p-3 text-left whitespace-nowrap">
           Name
         </th>
 
-        <th className="p-3 text-left">
+        <th className="px-3 py-2 sm:p-3 text-left whitespace-nowrap">
           Gender
         </th>
 
-        <th className="p-3 text-left">
+        <th className="px-3 py-2 sm:p-3 text-left whitespace-nowrap">
           State
         </th>
 
@@ -174,19 +174,19 @@ export default function Dashboard() {
             key={b.id}
             className="border-t"
           >
-            <td className="p-3">
+            <td className="px-3 py-2 sm:p-3">
               {b.beneficiaryNumber}
             </td>
 
-            <td className="p-3">
+            <td className="px-3 py-2 sm:p-3 whitespace-nowrap">
               {b.firstName} {b.lastName}
             </td>
 
-            <td className="p-3">
+            <td className="px-3 py-2 sm:p-3">
               {b.gender}
             </td>
 
-            <td className="p-3">
+            <td className="px-3 py-2 sm:p-3">
               {b.state}
             </td>
 
@@ -197,10 +197,10 @@ export default function Dashboard() {
     </tbody>
 
   </table>
-
+  </div>
 </div>
            
-            
-      </div>
+</div>           
+</div>
     
 )}

@@ -192,9 +192,9 @@ export default function SearchFilters() {
       
 {/* Search Form */}
 
-<div className="bg-white rounded-lg shadow p-6">
+<div className="bg-white rounded-lg shadow p-4 md:p-6">
 
-  <div className="flex justify-between items-center mb-6">
+  <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
 
     <h2 className="text-lg font-semibold">
       Search Beneficiary
@@ -202,21 +202,21 @@ export default function SearchFilters() {
 
     <button
       onClick={() => router.push("/beneficiary/new")}
-      className="bg-green-600 text-white px-4 py-2 rounded"
+      className="bg-green-600 text-white px-4 py-2 rounded w-full md:w-auto"
     >
       + New Beneficiary
     </button>
 
   </div>
 
-  <div className="grid grid-cols-9 gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-9 gap-4">
 
     <input
       type="text"
       placeholder="Beneficiary N0"
       value={beneficiaryNumber}
       onChange={(e) => setBeneficiaryNumber(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     />
 
     <input
@@ -224,7 +224,7 @@ export default function SearchFilters() {
       placeholder="First Name"
       value={firstName}
       onChange={(e) => setFirstName(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     />
 
     <input
@@ -232,7 +232,7 @@ export default function SearchFilters() {
       placeholder="Last Name"
       value={lastName}
       onChange={(e) => setLastName(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     />
 
     <input
@@ -240,7 +240,7 @@ export default function SearchFilters() {
       placeholder="Phone"
       value={phone}
       onChange={(e) => setPhone(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     />
 
     {/* Scheme */}
@@ -248,7 +248,7 @@ export default function SearchFilters() {
     <select
       value={schemeId}
       onChange={(e) => setSchemeId(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     >
       <option value="">Schemes</option>
 
@@ -268,7 +268,7 @@ export default function SearchFilters() {
     <select
       value={subSchemeId}
       onChange={(e) => setSubSchemeId(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     >
       <option value="">SubSchemes</option>
 
@@ -303,7 +303,7 @@ export default function SearchFilters() {
     setDistricts([]);
   }
 }}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     >
       <option value="">States</option>
 
@@ -323,7 +323,7 @@ export default function SearchFilters() {
     <select
       value={districtId}
       onChange={(e) => setDistrictId(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     >
       <option value="">Districts</option>
 
@@ -351,33 +351,54 @@ export default function SearchFilters() {
       placeholder="Ward"
       value={ward}
       onChange={(e) => setWard(e.target.value)}
-      className="border p-3 rounded"
+      className="border p-3 rounded w-full"
     />
 
   </div>
 
-  <div className="flex gap-3 mt-6">
+  <div className="flex flex-wrap gap-3 mt-6">
 
-    <button
-      onClick={handleSearch}
-      className="bg-blue-700 text-white px-6 py-2 rounded"
-    >
-      Search
-    </button>
+  <button
+    onClick={handleSearch}
+    className="
+      bg-blue-700
+      hover:bg-blue-800
+      text-white
+      px-5
+      py-2
+      rounded
+      text-sm
+      font-medium
+      min-w-[110px]
+      cursor-pointer
+    "
+  >
+    Search
+  </button>
 
-    <button
-      onClick={resetFilters}
-      className="bg-gray-500 text-white px-6 py-2 rounded"
-    >
-      Reset
-    </button>
+  <button
+    onClick={resetFilters}
+    className="
+      bg-gray-500
+      hover:bg-gray-600
+      text-white
+      px-5
+      py-2
+      rounded
+      text-sm
+      font-medium
+      min-w-[110px]
+      cursor-pointer
+    "
+  >
+    Reset
+  </button>
 
-  </div>
-
+</div>
 </div>
 
       {/* Search Results */}
-      <div className="mt-6 bg-white rounded-lg shadow">
+      <div className="mt-6 bg-white rounded-lg shadow overflow-hidden min-w-[900px]">
 
   <div className="p-4 border-b">
 
@@ -394,34 +415,34 @@ export default function SearchFilters() {
     </div>
 
   ) : (
-
-    <table className="w-full">
+     <div className="overflow-x-auto">
+    <table className="min-w-[900px] w-full">
 
       <thead>
 
         <tr className="bg-gray-50">
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             Beneficiary No
           </th>
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             Name
           </th>
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             Gender
           </th>
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             Phone
           </th>
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             State
           </th>
 
-          <th className="p-3 text-left">
+          <th className="px-3 py-2 text-left whitespace-nowrap">
             Action
           </th>
 
@@ -453,27 +474,27 @@ export default function SearchFilters() {
               className="border-t"
             >
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
                 {beneficiary.beneficiaryNumber}
               </td>
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
                 {beneficiary.firstName} {beneficiary.lastName}
               </td>
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
                 {beneficiary.gender}
               </td>
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
                 {beneficiary.phone}
               </td>
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
                 {beneficiary.state}
               </td>
 
-              <td className="p-3">
+              <td className="px-3 py-2 whitespace-nowrap">
 
                 <button
                   onClick={() =>
@@ -497,19 +518,20 @@ export default function SearchFilters() {
       </tbody>
 
     </table>
+    </div>
 
   )}
 
 </div>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center p-4 border-t bg-white rounded-b-lg">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 p-4 border-t bg-white rounded-b-lg">
 
   <div className="text-gray-600">
     Total Records: {totalRecords}
   </div>
 
-  <div className="flex items-center gap-2">
+  <div className="flex flex-wrap items-center gap-2">
 
     <button
       disabled={page === 1}

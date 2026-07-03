@@ -60,7 +60,7 @@ useEffect(() => {
     <div className="min-h-screen flex">
       {/* Sidebar */}
 
-     <aside className="fixed left-0 top-0 h-screen w-64 bg-blue-900 text-white">
+     <aside className="fixed left-0 top-0 h-screen w-56 bg-blue-900 text-white flex flex-col">
 
   <div className="p-6 border-b border-blue-700">
     <h2 className="font-bold text-xl">
@@ -68,7 +68,7 @@ useEffect(() => {
     </h2>
   </div>
 
-  <nav className="p-4 flex flex-col">
+  <nav className="p-4 flex flex-col gap-2">
 
     <Link
   href="/dashboard"
@@ -77,12 +77,12 @@ useEffect(() => {
   Dashboard
 </Link>
 
-<Link
+{/*<Link
   href="/dashboard"
   className="px-4 py-3 rounded hover:bg-blue-800"
 >
   Beneficiaries
-</Link>
+</Link>*/}
 
 <Link
   href="/beneficiary/new"
@@ -134,10 +134,10 @@ useEffect(() => {
 
       {/* Content */}
 
-      <main className="ml-64 flex-1 bg-gray-100">
+      <main className="flex-1 ml-56 bg-gray-100 overflow-x-auto min-h-screen">
         <header className="bg-white shadow border-b">
 
-  <div className="flex justify-between items-center px-8 py-4">
+  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 px-6 py-4">
 
     {/* Left */}
 
@@ -153,7 +153,7 @@ useEffect(() => {
 
     {/* Right */}
 
-    <div className="text-right">
+    <div className="text-right whitespace-nowrap">
 
       <p className="font-semibold text-blue-900">
         {userName}
@@ -170,7 +170,9 @@ useEffect(() => {
 </header>
 
         <div className="p-6">
+          <div className="min-w-[1000px] max-w-7xl mx-auto">
           {children}
+          </div>
         </div>
       </main>
     </div>
