@@ -6,11 +6,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: [
+      'http://localhost:3000',
+      'https://beneficiary-search-app.vercel.app',
+    ],
     credentials: true,
   });
 
-  await app.listen(5000,'0.0.0.0');
+  const port = process.env.PORT || 5000;
+
+  await app.listen(port, '0.0.0.0');
 
   console.log(
     `Application is running on: ${await app.getUrl()}`
